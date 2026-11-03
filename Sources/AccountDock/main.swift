@@ -20,7 +20,7 @@ struct Profile: Codable, Equatable {
 enum Store {
     static let appSupport = FileManager.default.homeDirectoryForCurrentUser
         .appendingPathComponent("Library/Application Support")
-    static let dir = appSupport.appendingPathComponent("AccountDock")
+    static let dir = appSupport.appendingPathComponent("Account Dock")
     static let file = dir.appendingPathComponent("profiles.json")
 
     /// No profiles on first run. An unreadable file is left alone rather than overwritten.
@@ -132,7 +132,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         if let button = statusItem.button {
-            button.image = NSImage(systemSymbolName: "person.2.circle", accessibilityDescription: "AccountDock")
+            button.image = NSImage(systemSymbolName: "person.2.circle", accessibilityDescription: "Account Dock")
             if button.image == nil { button.title = "CP" }
         }
         let menu = NSMenu()
@@ -205,7 +205,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         login.target = self
         login.state = SMAppService.mainApp.status == .enabled ? .on : .off
         menu.addItem(login)
-        menu.addItem(NSMenuItem(title: "Quit AccountDock", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        menu.addItem(NSMenuItem(title: "Quit Account Dock", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
     }
 
     @objc private func openProfile(_ sender: NSMenuItem) {
@@ -328,7 +328,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             profile is its own copy of Claude that macOS hasn't seen before.
 
             Enter your Mac password and choose “Always Allow” so it doesn't ask again. The prompt comes from \
-            macOS itself — AccountDock never sees your password.
+            macOS itself — Account Dock never sees your password.
             """
         alert.addButton(withTitle: "Continue")
         alert.addButton(withTitle: "Cancel")

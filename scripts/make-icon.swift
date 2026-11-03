@@ -1,5 +1,5 @@
 // Usage: swift scripts/make-icon.swift <out.icns>
-// Draws the AccountDock app icon (three overlapping profile-colour discs on a dark tile)
+// Draws the Account Dock app icon (three overlapping profile-colour discs on a dark tile)
 // at every macOS icon size and packs them into an .icns.
 import AppKit
 

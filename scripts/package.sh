@@ -1,5 +1,5 @@
 #!/bin/bash
-# Build the app and wrap it in a drag-to-Applications disk image: dist/AccountDock-<version>.dmg
+# Build the app and wrap it in a drag-to-Applications disk image: dist/Account-Dock-<version>.dmg
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -9,12 +9,12 @@ scripts/build.sh
 
 STAGE="$(mktemp -d)"
 trap 'rm -rf "$STAGE"' EXIT
-cp -R "build/AccountDock.app" "$STAGE/"
+cp -R "build/Account Dock.app" "$STAGE/"
 ln -s /Applications "$STAGE/Applications"
 
 mkdir -p dist
-DMG="dist/AccountDock-${VERSION}.dmg"
+DMG="dist/Account-Dock-${VERSION}.dmg"
 rm -f "$DMG"
-hdiutil create -quiet -volname "AccountDock" -srcfolder "$STAGE" -format UDZO -ov "$DMG"
+hdiutil create -quiet -volname "Account Dock" -srcfolder "$STAGE" -format UDZO -ov "$DMG"
 ( cd dist && shasum -a 256 "$(basename "$DMG")" > "$(basename "$DMG").sha256" )
 echo "Packaged: $DMG ($(du -h "$DMG" | cut -f1))"

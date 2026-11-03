@@ -1,4 +1,4 @@
-# AccountDock
+# Account Dock
 
 A tiny macOS menu-bar app for running several Claude Desktop accounts side by side.
 Each profile is a separate data folder passed to Claude Desktop via Electron's
@@ -21,39 +21,39 @@ keeps auto-updating normally.
 
 ## Requirements
 
-- macOS 13 or later, Apple silicon or Intel (AccountDock is a universal binary; the Intel half hasn't been tested)
+- macOS 13 or later, Apple silicon or Intel (Account Dock is a universal binary; the Intel half hasn't been tested)
 - Claude Desktop installed at `/Applications/Claude.app`
 - Xcode or the Command Line Tools (Swift) — only if you build from source
 
 ## Install
 
-1. Download `AccountDock-<version>.dmg` from the project's Releases page.
-   Optionally check it: in the folder with the download, run `shasum -a 256 -c AccountDock-<version>.dmg.sha256`.
-2. Open the disk image and drag **AccountDock** into **Applications**.
+1. Download `Account-Dock-<version>.dmg` from the project's Releases page.
+   Optionally check it: in the folder with the download, run `shasum -a 256 -c Account-Dock-<version>.dmg.sha256`.
+2. Open the disk image and drag **Account Dock** into **Applications**.
 3. Open it. macOS will warn you the first time — see below.
 
-Then look for the AccountDock icon in your menu bar. On first launch it offers to import the Claude account
+Then look for the Account Dock icon in your menu bar. On first launch it offers to import the Claude account
 you're already signed in to.
 
 ### The first-launch security warning
 
-AccountDock is not signed with an Apple Developer ID and is not notarized — that requires Apple's paid
+Account Dock is not signed with an Apple Developer ID and is not notarized — that requires Apple's paid
 developer programme, which this free hobby project doesn't use. macOS therefore shows a warning for any app
-downloaded this way, such as *"AccountDock can't be opened because Apple cannot check it for malicious
-software"* or *"AccountDock is damaged and can't be opened"*. The app isn't broken. The code is all in this
+downloaded this way, such as *"Account Dock can't be opened because Apple cannot check it for malicious
+software"* or *"Account Dock is damaged and can't be opened"*. The app isn't broken. The code is all in this
 repository if you'd like to read it, and the DMG's checksum is published next to the download.
 
 To open it, once:
 
-1. Double-click **AccountDock**, then dismiss the warning.
+1. Double-click **Account Dock**, then dismiss the warning.
 2. Open **System Settings → Privacy & Security**, scroll down to **Security**, and click **Open Anyway**
-   next to AccountDock. Confirm with your password or Touch ID, then click **Open**.
+   next to Account Dock. Confirm with your password or Touch ID, then click **Open**.
    (On macOS 13–14 you can instead right-click the app → **Open** → **Open**.)
 
 Or do the same from Terminal:
 
 ```sh
-xattr -dr com.apple.quarantine "/Applications/AccountDock.app"
+xattr -dr com.apple.quarantine "/Applications/Account Dock.app"
 ```
 
 macOS remembers your choice, so this only happens on the first launch (and again if you re-download the app).
@@ -64,10 +64,10 @@ Only do this for a copy you got from this project's Releases page.
 An app you build yourself isn't quarantined, so macOS doesn't warn. Clone this repository, then:
 
 ```sh
-scripts/build.sh --install     # builds and installs ~/Applications/AccountDock.app
+scripts/build.sh --install     # builds and installs ~/Applications/Account Dock.app
 ```
 
-To produce the disk image yourself: `scripts/package.sh` writes `dist/AccountDock-<version>.dmg` and its checksum.
+To produce the disk image yourself: `scripts/package.sh` writes `dist/Account-Dock-<version>.dmg` and its checksum.
 
 ## Use
 
@@ -80,7 +80,7 @@ To produce the disk image yourself: `scripts/package.sh` writes `dist/AccountDoc
 - **Remove Profile** — remove it from the list (and delete its app copy), or also move its data to the Trash.
 - **Launch at Login** — toggle (may not register, since the app is only ad-hoc signed).
 
-Profiles are listed in `~/Library/Application Support/AccountDock/profiles.json`; each profile's data
+Profiles are listed in `~/Library/Application Support/Account Dock/profiles.json`; each profile's data
 lives in `~/Library/Application Support/Claude-<id>`. Your default Claude profile (`Claude`) is untouched.
 
 ### The macOS password prompt
@@ -88,12 +88,12 @@ lives in `~/Library/Application Support/Claude-<id>`. Your default Claude profil
 The first time a **new** profile opens, macOS asks for your Mac login password so the profile can use
 "Claude Safe Storage" in your Keychain, where Claude keeps its sign-in secret. Each profile is a separate,
 locally re-signed copy of Claude, so macOS asks once per copy. Enter your password and choose **Always Allow**.
-AccountDock shows a short explanation first (with a "Don't show this again" checkbox) and never sees
+Account Dock shows a short explanation first (with a "Don't show this again" checkbox) and never sees
 your password — the prompt comes from macOS.
 
 ### Import your existing Claude account
 
-The first time you open AccountDock (with no profiles yet), it offers to import the Claude Desktop
+The first time you open Account Dock (with no profiles yet), it offers to import the Claude Desktop
 account you're already signed in to as your first profile, so you don't have to log in again. You can also
 do it later from **Import Current Claude Account…** in the menu.
 
