@@ -98,6 +98,16 @@ locally re-signed copy of Claude, so macOS asks once per copy. Enter your passwo
 Account Dock shows a short explanation first (with a "Don't show this again" checkbox) and never sees
 your password — the prompt comes from macOS.
 
+### Permissions are per profile
+
+Each profile is its own copy of Claude with its own bundle ID, so to macOS it is a **separate app**. Anything
+you grant Claude Desktop (screen recording, accessibility, microphone, file access, …) is *not* inherited: each
+profile asks for it on its own, and each shows up as its own entry in System Settings → Privacy & Security.
+
+Removing a profile in Account Dock deletes its app copy, unregisters it and resets its permissions where macOS
+allows. System-wide lists such as Full Disk Access can keep a stale entry: remove it with the **−** button there.
+Old entries are harmless; their toggles are simply off.
+
 ### Import your existing Claude account
 
 The first time you open Account Dock (with no profiles yet), it offers to import the Claude Desktop

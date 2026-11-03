@@ -3,7 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-VERSION="${VERSION:-0.1.0}"
+VERSION="${VERSION:-0.1.2}"
 
 # Universal binary so it runs on Apple silicon and Intel Macs.
 swift build -c release --arch arm64 --arch x86_64

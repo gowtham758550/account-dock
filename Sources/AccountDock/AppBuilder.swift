@@ -86,8 +86,22 @@ enum AppBuilder {
             throw error
         }
 
-        _ = try? run("/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister",
-                     ["-f", copy.path])
+        _ = try? run(lsregister, ["-f", copy.path])
+    }
+
+    private static let lsregister =
+        "/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister"
+
+    /// Deletes a profile's app copy and, best effort, the traces macOS keeps of it (its permission entries and
+    /// its LaunchServices record). Order matters: `tccutil` can only resolve a bundle ID while the app is
+    /// still registered, so permissions are reset first, then the app is unregistered, then deleted.
+    /// System-wide lists (e.g. Full Disk Access) may still keep an entry that only the user can remove.
+    static func removeCopy(for p: Profile) {
+        let copy = copyURL(for: p)
+        guard FileManager.default.fileExists(atPath: copy.path) else { return }
+        _ = try? run("/usr/bin/tccutil", ["reset", "All", bundleID(for: p)])
+        _ = try? run(lsregister, ["-u", copy.path])
+        try? FileManager.default.removeItem(at: copy)
     }
 
     // MARK: Signing

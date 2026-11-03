@@ -515,9 +515,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
                 }
             }
         }
-        // The badged app copy is a regenerable build artifact, so it's removed outright.
+        // The badged app copy is a regenerable build artifact, so it's removed outright (with its macOS traces).
         if Claude.runningPID(dataDir: p.dataDir) == nil {
-            try? FileManager.default.removeItem(at: AppBuilder.copyURL(for: p))
+            AppBuilder.removeCopy(for: p)
         }
         profiles.remove(at: sender.tag)
         Store.save(profiles)
