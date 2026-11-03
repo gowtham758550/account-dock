@@ -44,18 +44,24 @@ verify "Account Dock" is free of malware…*, or *"Account Dock" can't be opened
 for malicious software*, or *"Account Dock" is damaged and can't be opened*. The app isn't broken. The code is
 all in this repository if you'd like to read it, and the DMG's checksum is published next to the download.
 
-To open it, once:
+To open it, once — pick one way:
 
-1. Double-click **Account Dock**. When the warning appears, click **Done** (not *Move to Bin*, which deletes the app).
-2. Open **System Settings → Privacy & Security**, scroll down to **Security**, and click **Open Anyway**
-   next to Account Dock. Confirm with your password or Touch ID, then click **Open**.
-   (On macOS 13–14 you can instead right-click the app → **Open** → **Open**.)
-
-Or do the same from Terminal:
+**Quickest (Terminal).** This removes macOS's "downloaded from the internet" flag and opens the app:
 
 ```sh
-xattr -dr com.apple.quarantine "/Applications/Account Dock.app"
+xattr -dr com.apple.quarantine "/Applications/Account Dock.app" && open "/Applications/Account Dock.app"
 ```
+
+(If you put the app somewhere other than Applications, change the path.)
+
+**With clicks.**
+
+1. Double-click **Account Dock**. When the warning appears, click **Done** (not *Move to Bin*, which deletes the app).
+2. Open **System Settings → Privacy & Security**. To jump straight there, run
+   `open "x-apple.systempreferences:com.apple.preference.security"` in Terminal.
+3. Scroll down to **Security** and click **Open Anyway** next to Account Dock. Confirm with your password or
+   Touch ID, then click **Open**.
+   (On macOS 13–14 you can instead right-click the app → **Open** → **Open**.)
 
 macOS remembers your choice, so this only happens on the first launch (and again if you re-download the app).
 Only do this for a copy you got from this project's Releases page.
