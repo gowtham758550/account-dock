@@ -139,6 +139,28 @@ open that profile (while it's not running).
 - If macOS shows a stale Dock icon after an edit, run `killall Dock`.
 - The re-signed copy has a different code signature from the original, so macOS may ask for keychain access once.
 
+## Uninstall
+
+1. In Account Dock, use **Remove Profile** for each profile. Choose **Move data to Trash** if you also want that
+   profile's sign-in and chats gone (keep the data if you might come back). Removing a profile also deletes its
+   app copy from `~/Applications` and clears its permissions where macOS allows.
+2. Turn off **Launch at Login** in the menu (or in System Settings → General → Login Items).
+3. Quit Account Dock and drag it from Applications to the Trash.
+4. Optional leftovers: the profile list in `~/Library/Application Support/Account Dock`, and its saved settings
+   (`defaults delete local.account-dock`).
+
+Your regular Claude Desktop and its data are never touched by any of this.
+
+**If you deleted the app without removing the profiles first**, look for what's left and delete what's yours:
+
+```sh
+ls -d ~/Applications/Claude\ \(*\).app              # one badged copy per profile
+ls -d ~/Library/Application\ Support/Claude-*         # one data folder per profile (sign-in and chats)
+```
+
+Review the lists before deleting anything — the data folders hold each profile's sign-in. Stale entries in
+System Settings → Privacy & Security can be removed with the **−** button.
+
 ## License
 
 [MIT](LICENSE)
