@@ -39,13 +39,14 @@ you're already signed in to.
 
 Account Dock is not signed with an Apple Developer ID and is not notarized — that requires Apple's paid
 developer programme, which this free hobby project doesn't use. macOS therefore shows a warning for any app
-downloaded this way, such as *"Account Dock can't be opened because Apple cannot check it for malicious
-software"* or *"Account Dock is damaged and can't be opened"*. The app isn't broken. The code is all in this
-repository if you'd like to read it, and the DMG's checksum is published next to the download.
+downloaded this way. Depending on your macOS version you'll see *"Account Dock" Not Opened — Apple could not
+verify "Account Dock" is free of malware…*, or *"Account Dock" can't be opened because Apple cannot check it
+for malicious software*, or *"Account Dock" is damaged and can't be opened*. The app isn't broken. The code is
+all in this repository if you'd like to read it, and the DMG's checksum is published next to the download.
 
 To open it, once:
 
-1. Double-click **Account Dock**, then dismiss the warning.
+1. Double-click **Account Dock**. When the warning appears, click **Done** (not *Move to Bin*, which deletes the app).
 2. Open **System Settings → Privacy & Security**, scroll down to **Security**, and click **Open Anyway**
    next to Account Dock. Confirm with your password or Touch ID, then click **Open**.
    (On macOS 13–14 you can instead right-click the app → **Open** → **Open**.)
