@@ -9,6 +9,12 @@ extra disk) with its own bundle ID and a coloured badge with initials on the ico
 profile a separate, recognisable Dock icon. `/Applications/Claude.app` itself is never modified and
 keeps auto-updating normally.
 
+<p>
+  <img src="docs/images/menu.png" width="260" alt="Account Dock's menu-bar menu listing two profiles with colour dots, plus Add Profile, Edit Profile, Remove Profile, Launch at Login and Quit">
+  &nbsp;&nbsp;
+  <img src="docs/images/add-profile.png" width="300" alt="The Add Profile dialog: a name field, optional badge letters and a colour picker">
+</p>
+
 > **Not affiliated with, endorsed by, or sponsored by Anthropic.** "Claude" is a trademark of Anthropic and is
 > used here only to say which app this works with. This is an independent hobby tool. It builds a locally
 > re-signed copy of an app you already have installed; nothing is downloaded or redistributed, and the
